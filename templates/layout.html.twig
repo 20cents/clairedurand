@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{% block title '' %}</title>
+
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
+
+        <script type="text/javascript" src="{{ asset('vendor/jquery-3.1.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/imagesloaded.pkgd.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('vendor/masonry.pkgd.min.js') }}"></script>
+
+        <script type="text/javascript">
+            
+        </script>
+    </head>
+    <body>
+        <header></header>
+        {% block content %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,28 @@
+{% extends "layout.html.twig" %} {% block title 'Accueil' %} {% block content %}
+<div class="grid">
+  <div class="grid-sizer"></div>
+  <div class="gutter-sizer"></div>
+  {% for image in images %}
+  <div class="grid-item {{ image.thumb.className|default('') }}">
+    <img src="/images/book/{{ image.name }}.jpg">
+  </div>
+  {% endfor %}
+</div>
+
+<script type="text/javascript">
+  var clairedr = clairedr || {};
+  clairedr.$grid = $('.grid').masonry({
+    itemSelector: '.grid-item',
+    columnWidth: '.grid-sizer',
+    //gutter: '.gutter-sizer',
+    percentPosition: true,
+    transitionDuration: 0,
+    //percentPosition: true,
+    //isFitWidth: true
+  });
+  clairedr.$grid.imagesLoaded().progress(function() {
+    clairedr.$grid.masonry('layout');
+  });
+</script>
+
+{% endblock %}
