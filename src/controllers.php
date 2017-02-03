@@ -10,6 +10,16 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 function getImgConf($name) {
     $imgConf = array(
+        'alcina-01' => array(
+            'thumb' => array(
+                'className' => 'grid-item--width2'
+            ),
+        ),
+        'carmen-01' => array(
+            'thumb' => array(
+                'className' => 'grid-item--width2'
+            ),
+        ),
         'sac-gris-parme' => array(
             'thumb' => array(
                 'className' => 'grid-item--width2'
@@ -33,19 +43,22 @@ function getImgConf($name) {
 $app->get('/', function () use ($app) {
     $images = array(
         'chauve-souris-01',
+        'carmen-01',
         'foulard-eau-deco',
         'saroual',
         'sac-gris-parme',
         'sac-noir-turquoise',
         'laine-modulable-orange',
         'chauve-souris-02',
-        'laine-modulable-dos',
-        'laine-modulable-rayure-01',
+        //'laine-modulable-dos',
+        //'laine-modulable-rayure-01',
         'foulard-rayure-fleur',
-        'laine-modulable-rayure-02',
+        //'laine-modulable-rayure-02',
         'onet-01',
         'onet-02',
         'jupe-courte-01',
+        'cosi-01',
+        'cosi-02',
         'house-03',
         'jupe-courte-02',
         'mitaine',
@@ -56,7 +69,8 @@ $app->get('/', function () use ($app) {
         'house-02',
         'tunique-02',
         'sac-noir-marron',
-        'foulard-noir-arabesque'
+        'foulard-noir-arabesque',
+        'alcina-01',
     );
     foreach ($images as &$image) {
         $image = getImgConf($image);
