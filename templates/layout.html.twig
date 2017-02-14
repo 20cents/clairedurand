@@ -21,8 +21,12 @@
     <body>
         <header>
             <h1>
-                <img src=""
+                <img src="{{ asset('images/logo.png') }}" />
+                <small>couturière - modéliste</small>
             </h1>
+            <div class="contact">
+                <span>0625903791</span> / <a href="mailto:contact@clairedurand.fr">contact@clairedurand.fr</a>
+            </div>
         </header>
         {% block content %}{% endblock %}
         <script>

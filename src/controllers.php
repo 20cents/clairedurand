@@ -33,10 +33,15 @@ function getImgConf($name) {
     );
     if (isset($imgConf[$name])) {
         $imgConf[$name]['name'] = $name;
-        return $imgConf[$name];
+
+        return array_merge(array(
+            'name' => $name,
+            'zoom' => $name,
+        ), $imgConf[$name]);
     }
     return array(
         'name' => $name,
+        'zoom' => $name,
     );
 }
 

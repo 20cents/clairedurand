@@ -4,9 +4,16 @@
   <div class="gutter-sizer"></div>
   {% for image in images %}
   <div class="grid-item {{ image.thumb.className|default('') }}">
-    <img src="/images/book/{{ image.name }}.jpg">
+    <img src="{{ asset('images/book/'~ image.name ~'.jpg') }}" data-zoom="{{ asset('images/zoom/'~ image.zoom ~'.jpg') }}" />
   </div>
   {% endfor %}
+</div>
+
+<div class="full reveal" data-reveal>
+  <button class="close-button" data-close aria-label="Close reveal" type="button">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="img"></div>
 </div>
 
 <script type="text/javascript">
@@ -22,6 +29,13 @@
   });
   clairedr.$grid.imagesLoaded().progress(function() {
     clairedr.$grid.masonry('layout');
+  });
+  var $reveal = $('div[data-reveal]');
+  var $revealImg = $reveal.find('.img');
+  $('img[data-zoom]').click(function() {
+    var $me = $(this);
+    $revealImg.css('background-image', 'url("'+ $me.data('zoom') +'")');
+    $reveal.foundation('open');
   });
 </script>
 
