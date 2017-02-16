@@ -52,6 +52,8 @@ header .contact a {
 .reveal {
   background: #FFF;
   padding: .3rem;
+  top: 0 !important;
+  left: 0 !important;
 }
 .reveal .close-button:hover,
 .reveal .close-button:focus {
