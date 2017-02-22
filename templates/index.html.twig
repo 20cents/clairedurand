@@ -4,7 +4,7 @@
   <div class="gutter-sizer"></div>
   {% for image in images %}
   <div class="grid-item {{ image.thumb.className|default('') }}">
-    <img src="{{ asset('images/book/'~ image.name ~'.jpg') }}" data-zoom="{{ asset('images/zoom/'~ image.zoom ~'.jpg') }}" />
+    <img src="{{ asset('images/wall/'~ image.name ~'.jpg') }}" data-zoom="{{ asset('images/zoom/'~ image.zoom ~'.jpg') }}" />
   </div>
   {% endfor %}
 </div>

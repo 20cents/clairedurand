@@ -25,7 +25,7 @@ function getImgConf($name) {
                 'className' => 'grid-item--width2'
             ),
         ),
-        'house-01' => array(
+        'housse-01' => array(
             'thumb' => array(
                 'className' => 'grid-item--width2'
             ),
@@ -47,34 +47,37 @@ function getImgConf($name) {
 
 $app->get('/', function () use ($app) {
     $images = array(
+        'corset-01',
+        'jeans-01',
+        'veste-tailleur-01',
+        'sac-noir-turquoise',
         'chauve-souris-01',
+        'housse-02',
         'carmen-01',
         'foulard-eau-deco',
-        'saroual',
         'sac-gris-parme',
-        'sac-noir-turquoise',
-        'laine-modulable-orange',
-        'chauve-souris-02',
+        'saroual',
+        'robe-tieanddye-01',
+        //'chauve-souris-02',
         //'laine-modulable-dos',
         //'laine-modulable-rayure-01',
-        'foulard-rayure-fleur',
+        'foulard-eau-ethnique',
         //'laine-modulable-rayure-02',
         'onet-01',
         'onet-02',
         'jupe-courte-01',
         'cosi-01',
         'cosi-02',
-        'house-03',
+        'housse-03',
         'jupe-courte-02',
         'mitaine',
-        'costume-homme',
+        'laine-modulable-orange',
         'tunique-01',
         'robe-mariee',
-        'house-01',
-        'house-02',
+        'housse-01',
         'tunique-02',
         'sac-noir-marron',
-        'foulard-noir-arabesque',
+        'foulard-rayure-fleur',
         'alcina-01',
     );
     foreach ($images as &$image) {
