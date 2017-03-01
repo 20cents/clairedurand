@@ -11,10 +11,13 @@
         <link href="{{ asset('vendor/foundation/css/foundation.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
 
+        <script type="text/javascript" src="{{ asset('vendor/lodash.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/jquery-3.1.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/imagesloaded.pkgd.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/masonry.pkgd.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('vendor/foundation/js/vendor/foundation.min.js') }}"></script>
+
+        <script type="text/javascript" src="{{ asset('js/wall.js') }}"></script>
 
         <script type="text/javascript">
             
@@ -31,8 +34,9 @@
             </div>
         </header>
         {% block content %}{% endblock %}
-        <script>
-        $(document).foundation();
+        <script type="text/javascript">
+            $(document).foundation();
         </script>
+        {% block script_body_end %}{% endblock %}
     </body>
 </html>

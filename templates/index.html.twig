@@ -3,8 +3,8 @@
   <div class="grid-sizer"></div>
   <div class="gutter-sizer"></div>
   {% for image in images %}
-  <div class="grid-item {{ image.thumb.className|default('') }}">
-    <img src="{{ asset('images/wall/'~ image.name ~'.jpg') }}" data-zoom="{{ asset('images/zoom/'~ image.zoom ~'.jpg') }}" />
+  <div class="grid-item js-zoomable {{ image.thumb.className|default('') }}" name="{{ image.name }}">
+    <img src="{{ asset('images/wall/'~ image.name ~'.jpg') }}" />
   </div>
   {% endfor %}
 </div>
@@ -13,30 +13,23 @@
   <button class="close-button" data-close aria-label="Close reveal" type="button">
     <span aria-hidden="true">&times;</span>
   </button>
-  <div class="img"></div>
+  <div class="content">
+    <figure>
+      <figcaption></figcaption>
+      <div class="img"></div>
+    </figure>
+  </div>
 </div>
+{% endblock %}
 
+{% block script_body_end %}
 <script type="text/javascript">
-  var clairedr = clairedr || {};
-  clairedr.$grid = $('.grid').masonry({
-    itemSelector: '.grid-item',
-    columnWidth: '.grid-sizer',
-    //gutter: '.gutter-sizer',
-    percentPosition: true,
-    transitionDuration: 0,
-    //percentPosition: true,
-    //isFitWidth: true
-  });
-  clairedr.$grid.imagesLoaded().progress(function() {
-    clairedr.$grid.masonry('layout');
-  });
-  var $reveal = $('div[data-reveal]');
-  var $revealImg = $reveal.find('.img');
-  $('img[data-zoom]').click(function() {
-    var $me = $(this);
-    $revealImg.css('background-image', 'url("'+ $me.data('zoom') +'")');
-    $reveal.foundation('open');
+  $(document).ready(function() {
+    var wallImages = {{ images|json_encode()|raw }};
+    new clairedr.Wall({
+      images: wallImages,
+      zoomDir: "{{ asset('images/wall/') }}"
+    });
   });
 </script>
-
 {% endblock %}

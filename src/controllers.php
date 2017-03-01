@@ -8,45 +8,107 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 //Request::setTrustedProxies(array('127.0.0.1'));
 
-function getImgConf($name) {
-    $imgConf = array(
-        'alcina-01' => array(
-            'thumb' => array(
-                'className' => 'grid-item--width2'
-            ),
+ $images = array(
+    'corset-01' => array(
+        'caption' => 'Corset époque 1820',
+    ),
+    'jeans-01' => array(
+        'caption' => 'Lorem',
+    ),
+    'veste-tailleur-01' => array(
+        'caption' => 'Lorem',
+    ),
+    'sac-noir-turquoise' => array(
+        'caption' => 'Lorem',
+    ),
+    'chauve-souris-01' => array(
+        'caption' => 'Lorem',
+    ),
+    'housse-02' => array(
+        'caption' => 'Lorem',
+    ),
+    'carmen-01' => array(
+        'caption' => 'Lorem',
+        'thumb' => array(
+            'className' => 'grid-item--width2'
         ),
-        'carmen-01' => array(
-            'thumb' => array(
-                'className' => 'grid-item--width2'
-            ),
+    ),
+    'foulard-eau-deco' => array(
+        'caption' => 'Lorem',
+    ),
+    'sac-gris-parme' => array(
+        'caption' => 'Lorem',
+        'thumb' => array(
+          'className' => 'grid-item--width2'
         ),
-        'sac-gris-parme' => array(
-            'thumb' => array(
-                'className' => 'grid-item--width2'
-            ),
+    ),
+    'saroual' => array(
+        'caption' => 'Lorem',
+    ),
+    'robe-tieanddye-01' => array(
+        'caption' => 'Lorem',
+    ),
+    'foulard-eau-ethnique' => array(
+        'caption' => 'Lorem',
+    ),
+    'onet-01' => array(
+        'caption' => 'Lorem',
+    ),
+    'onet-02' => array(
+        'caption' => 'Lorem',
+    ),
+    'jupe-courte-01' => array(
+        'caption' => 'Lorem',
+    ),
+    'cosi-01' => array(
+        'caption' => 'Lorem',
+    ),
+    'cosi-02' => array(
+        'caption' => 'Lorem',
+    ),
+    'housse-03' => array(
+        'caption' => 'Lorem',
+    ),
+    'jupe-courte-02' => array(
+        'caption' => 'Lorem',
+    ),
+    'mitaine' => array(
+        'caption' => 'Lorem',
+    ),
+    'laine-modulable-orange' => array(
+        'caption' => 'Lorem',
+    ),
+    'tunique-01' => array(
+        'caption' => 'Lorem',
+    ),
+    'robe-mariee' => array(
+        'caption' => 'Lorem',
+    ),
+    'housse-01' => array(
+        'caption' => 'Lorem',
+        'thumb' => array(
+          'className' => 'grid-item--width2'
         ),
-        'housse-01' => array(
-            'thumb' => array(
-                'className' => 'grid-item--width2'
-            ),
+    ),
+    'tunique-02' => array(
+        'caption' => 'Lorem',
+    ),
+    'sac-noir-marron' => array(
+        'caption' => 'Lorem',
+    ),
+    'foulard-rayure-fleur' => array(
+        'caption' => 'Lorem',
+    ),
+    'alcina-01' => array(
+        'caption' => 'Lorem',
+        'thumb' => array(
+            'className' => 'grid-item--width2'
         ),
-    );
-    if (isset($imgConf[$name])) {
-        $imgConf[$name]['name'] = $name;
+    ),
+);
 
-        return array_merge(array(
-            'name' => $name,
-            'zoom' => $name,
-        ), $imgConf[$name]);
-    }
-    return array(
-        'name' => $name,
-        'zoom' => $name,
-    );
-}
-
-$app->get('/', function () use ($app) {
-    $images = array(
+$app->get('/', function () use ($app, $images) {
+    $imageNames = array(
         'corset-01',
         'jeans-01',
         'veste-tailleur-01',
@@ -80,11 +142,16 @@ $app->get('/', function () use ($app) {
         'foulard-rayure-fleur',
         'alcina-01',
     );
-    foreach ($images as &$image) {
-        $image = getImgConf($image);
+    $wallImages = array();
+    foreach ($imageNames as $imageName) {
+        //$image = $app['getImgConf']($image);
+        $wallImages[] = array_merge(array(
+            'name' => $imageName,
+            'zoom' => $imageName,
+        ), $images[$imageName]);
     }
     return $app['twig']->render('index.html.twig', array(
-        'images' => $images
+        'images' => $wallImages,
     ));
 })
 ->bind('homepage')
