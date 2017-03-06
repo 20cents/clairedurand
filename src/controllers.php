@@ -115,7 +115,7 @@ $app->get('/', function () use ($app, $images) {
         'sac-noir-turquoise',
         'chauve-souris-01',
         'housse-02',
-        'carmen-01',
+        'alcina-01',
         'foulard-eau-deco',
         'sac-gris-parme',
         'saroual',
@@ -140,7 +140,7 @@ $app->get('/', function () use ($app, $images) {
         'tunique-02',
         'sac-noir-marron',
         'foulard-rayure-fleur',
-        'alcina-01',
+        'carmen-01',
     );
     $wallImages = array();
     foreach ($imageNames as $imageName) {
