@@ -28,7 +28,7 @@
     var wallImages = {{ images|json_encode()|raw }};
     new clairedr.Wall({
       images: wallImages,
-      zoomDir: "{{ asset('images/wall/') }}"
+      zoomDir: "{{ asset('images/zoom/') }}"
     });
   });
 </script>
