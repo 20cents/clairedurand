@@ -63,24 +63,39 @@ header .contact a {
   width: 100%;
   height: 100%;
   display: flex;
-}
-.reveal figure {
-  width: 100%;
-  display: flex;
   flex-direction: column;
   text-align: center;
 }
-.reveal figcaption {
+.reveal .caption {
   order: 1;
   font-size: .9rem;
   line-height: 1.3;
   padding: .5rem 5px .2rem;
 }
-.reveal figure > div {
+.reveal .swiper-container {
   flex: 1;
+  width: 100%;
   overflow: hidden;
   background: no-repeat center;
   background-size: contain;
+}
+/*.reveal .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #000;
+}*/
+.reveal .swiper-slide img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
 }
 .close-button,
 .close-button.medium {
@@ -138,7 +153,7 @@ header .contact a {
   .grid-item {
     padding: 8px;
   }
-  .reveal figcaption {
+  .reveal .caption {
     order: 0;
     padding: 1rem 40px;
   }

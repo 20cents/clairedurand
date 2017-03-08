@@ -11,9 +11,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
  $images = array(
     'corset-01' => array(
         'caption' => 'Corset époque 1820',
+        'nbZoom' => 3,
     ),
     'jeans-01' => array(
         'caption' => 'Fabrication de jeans sur commande',
+        'nbZoom' => 2,
     ),
     'veste-tailleur-01' => array(
         'caption' => 'Veste de costume homme - technique tailleur',
@@ -147,7 +149,6 @@ $app->get('/', function () use ($app, $images) {
         //$image = $app['getImgConf']($image);
         $wallImages[] = array_merge(array(
             'name' => $imageName,
-            'zoom' => $imageName,
         ), $images[$imageName]);
     }
     return $app['twig']->render('index.html.twig', array(
