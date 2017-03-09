@@ -79,24 +79,6 @@ header .contact a {
   background: no-repeat center;
   background-size: contain;
 }
-/*.reveal .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: #000;
-}*/
-.reveal .swiper-slide img {
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  max-height: 100%;
-  -ms-transform: translate(-50%, -50%);
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  position: absolute;
-  left: 50%;
-  top: 50%;
-}
 .close-button,
 .close-button.medium {
   width: 1em;
@@ -111,11 +93,6 @@ header .contact a {
   margin-top: -4px;
   display: block;
 }
-/*@media print, screen and (min-width: 40em) {
-  header {
-    font-size: 3rem;
-  }
-}*/
 @media screen and (min-width: 640px) {
   header {
     font-size: 3rem;

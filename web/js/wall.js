@@ -25,35 +25,25 @@ clairedr.Wall = function(options) {
 
   self.initZoom = function() {
     var $reveal = $('div[data-reveal]');
-    var $caption = $reveal.find('.caption');
-    var $swiperWrapper = $reveal.find('.swiper-wrapper');
+    var $content = $reveal.find('.content');
+
     var zoomData;
     var swiper;
     function initSwiper() {
-      zoomData.nbZoom = zoomData.nbZoom || 1;
-      _.forEach(_.range(zoomData.nbZoom), function(index) {
-        var $slide = $('<div class="swiper-slide" />');
-        $slide
-          .append($('<img src="' + options.zoomDir + zoomData.name + '-' + (index+1) + '.jpg" class="swiper-laz" />'))
-          //.append($('<div class="swiper-lazy-preloader swiper-lazy-preloader-black" />'))
-          ;
-        $swiperWrapper.append($slide);
-      });
-      swiper = new Swiper('.swiper-container', {
-        //zoom: true,
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        pagination: '.swiper-pagination',
-        paginationClickable: true,
-        // Disable preloading of all images
-        //preloadImages: false,
-        // Enable lazy loading
-        //lazyLoading: true,
-        onDestroy: function() {
-          console.log('la');
-          $swiperWrapper.empty();
-        }
-      });
+      setTimeout(function() {
+        swiper = new Swiper('.swiper-container', {
+          zoom: true,
+          nextButton: '.swiper-button-next',
+          prevButton: '.swiper-button-prev',
+          pagination: '.swiper-pagination',
+          paginationClickable: true,
+          preloadImages: false,
+          lazyLoading: true,
+          onDestroy: function() {
+            $content.empty();
+          }
+        });
+      }, 500);
     }
 
     self.$grid.find('div.js-zoomable img').click(function() {
@@ -61,28 +51,41 @@ clairedr.Wall = function(options) {
       zoomData = _.find(options.images, function(image, index) {
         return image.name == name;
       });
-      $caption.html(zoomData.caption);
+      zoomData.nbZoom = zoomData.nbZoom || 1;
+      var isMultiple = zoomData.nbZoom > 1;
+
+      $content.html(
+        '<div class="caption">' + zoomData.caption + '</div>'
+        + '<div class="swiper-container"><div class="swiper-wrapper"></div></div>'
+      );
+      if (isMultiple) {
+        $content.find('.swiper-container')
+          .append('<div class="swiper-pagination swiper-pagination-black"></div>')
+          .append('<div class="swiper-button-next swiper-button-black"></div>')
+          .append('<div class="swiper-button-prev swiper-button-black"></div>')
+          ;
+      }
+      var $swiperWrapper = $content.find('.swiper-wrapper');
+      _.forEach(_.range(zoomData.nbZoom), function(index) {
+        var $slide = $('<div class="swiper-slide" />');
+        var imgUrl = options.zoomDir + zoomData.name;
+        if (isMultiple)
+          imgUrl += '-' + (index + 1);
+        imgUrl += '.jpg';
+        $slide
+          .append($('<div class="swiper-zoom-container"><img data-src="' + imgUrl + '" class="swiper-lazy" /></div>'))
+          //.append($('<div class="swiper-zoom-container"><img data-src="http://lorempixel.com/1200/800/abstract/' + (index + 1) + '" class="swiper-lazy" /></div>'))
+          .append($('<div class="swiper-lazy-preloader swiper-lazy-preloader-black" />'))
+          ;
+        $swiperWrapper.append($slide);
+      });
+
       $reveal.foundation('open');
     });
 
     $reveal.on('open.zf.reveal', initSwiper);
     $reveal.on('closed.zf.reveal', function() {
       swiper.destroy();
-    });
-  };
-
-  self.initZoom_ = function() {
-    var $reveal = $('div[data-reveal]');
-    var $img = $reveal.find('.img');
-    var $caption = $reveal.find('.caption');
-    self.$grid.find('div.js-zoomable img').click(function() {
-      var name = $(this).closest('.js-zoomable').attr('name');
-      var zoomData = _.find(options.images, function(image, index) {
-        return image.name == name;
-      });
-      $caption.html(zoomData.caption);
-      $img.css('background-image', 'url("' + options.zoomDir + zoomData.zoom + '.jpg")');
-      $reveal.foundation('open');
     });
   };
 
