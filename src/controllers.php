@@ -26,6 +26,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
     ),
     'chauve-souris-01' => array(
         'caption' => 'Vêtement modulable - petite série',
+        'nbZoom' => 3,
     ),
     'housse-02' => array(
         'caption' => 'Pochette d\'ordinateur - petite série',
@@ -49,6 +50,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
     ),
     'saroual' => array(
         'caption' => 'Vêtement modulable - petite série',
+        'nbZoom' => 3,
     ),
     'robe-tieanddye-01' => array(
         'caption' => 'Robe sur mesure - création et réalisation',
@@ -66,6 +68,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
     ),
     'jupe-courte-01' => array(
         'caption' => 'Vêtement modulable - petite série',
+        'nbZoom' => 2,
     ),
     'cosi-01' => array(
         'caption' => 'Couturière pour le Festival d\'Aix 2016<br /><small>Opéra Così fan tutte - Mise en scène Christophe Honoré - Costumes Thibault Vancraenenbroeck</small>',
@@ -77,9 +80,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
         'caption' => 'Pochette d\'ordinateur - petite série',
         'nbZoom' => 2,
     ),
-    'jupe-courte-02' => array(
-        'caption' => 'Vêtement modulable - petite série',
-    ),
     'mitaine' => array(
         'caption' => 'Mitaines réversibles - petite série',
     ),
@@ -89,6 +89,7 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
     ),
     'tunique-01' => array(
         'caption' => 'Vêtement modulable - petite série',
+        'nbZoom' => 3,
     ),
     'robe-mariee-01' => array(
         'caption' => 'Robe de mariée sur mesure - création et réalisation',
@@ -100,9 +101,6 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
           'className' => 'grid-item--width2'
         ),
         'nbZoom' => 3,
-    ),
-    'tunique-02' => array(
-        'caption' => 'Vêtement modulable - petite série',
     ),
     'sac-noir-marron' => array(
         'caption' => 'Sac à main et pochette - petite série',
@@ -143,13 +141,11 @@ $app->get('/', function () use ($app, $images) {
         'cosi-01',
         'cosi-02',
         'housse-03',
-        'jupe-courte-02',
         'mitaine',
         'laine-modulable',
         'tunique-01',
         'robe-mariee-01',
         'housse-01',
-        'tunique-02',
         'sac-noir-marron',
         'foulard-03',
         'carmen-01',
